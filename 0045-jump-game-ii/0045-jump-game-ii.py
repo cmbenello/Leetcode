@@ -11,8 +11,6 @@ class Solution:
             for i in range(1,nums[pos] + 1):
                 if pos + i == n:
                     return res
-                print(nums[pos + i] , end = " ")
-                print(nums[pos + i] - nums[pos] + i, max_jump)
                 if nums[pos + i] - nums[pos] + i > max_jump:
                     max_jump = nums[pos + i] - nums[pos] + i
                     max_jump_pos = pos + i

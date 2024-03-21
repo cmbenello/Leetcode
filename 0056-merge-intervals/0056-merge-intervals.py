@@ -6,9 +6,7 @@ class Solution:
         i = len(intervals) - 1
         
         while i > 0:
-            # print(intervals[i][0], intervals[i - 1][1], i)
             if intervals[i][0] <= intervals[i - 1][1]:
-                # print("hi")
                 to_insert = [min(intervals[i][0], intervals[i - 1][0]), intervals[i][1]]
                 intervals.insert(i + 1, to_insert)
                 del intervals[i]

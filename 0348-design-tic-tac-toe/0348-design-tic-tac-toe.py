@@ -37,7 +37,6 @@ class TicTacToe:
         if self.diag2 == n or self.diag2 == -n:
             return player
         
-        # print(self.hor_count, self.vert_count)
         return 0
         
         

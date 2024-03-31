@@ -4,11 +4,13 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
         
-        new_nums = []
         
-        for i in range(len(nums) - 1):
-            new_nums.append((nums[i] + nums[i + 1]) % 10)
+        while len(nums) > 1:
+            new_nums = []
+            for i in range(len(nums) - 1):
+                new_nums.append((nums[i] + nums[i + 1]) % 10)
+            nums = new_nums
         
-        return self.triangularSum(new_nums)
+        return nums[0]
             
         

@@ -2,21 +2,24 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         
-        curr = []
-        def dfs(i, cur, total):
+        
+        def helper(i, curr, total):
             if total == target:
-                res.append(curr.copy())
+                res.append(curr[:])
                 return
             
-            if i >= len(candidates) or total > target:
+            if total > target or i >= len(candidates):
                 return
+            
             
             curr.append(candidates[i])
-            dfs(i, curr , total + candidates[i])
+            
+            helper(i, curr, total + candidates[i])
             
             curr.pop()
             
-            dfs(i + 1, curr, total)
+            helper(i + 1, curr, total)
+            
+        helper(0, [], 0)
         
-        dfs(0, [], 0)
         return res

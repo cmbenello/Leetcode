@@ -13,19 +13,22 @@ class Solution:
         q1 = [root]
         q2 = []
         
-        
         while q1:
-            # print(q1)
-            for val in q1:
-                if val.left:
-                    q2.append(val.left)
-                if val.right:
-                    q2.append(val.right)
-            
-            if q1:
-                res.append([i.val for i in q1])
-            
+            length = len(q1)
+            for i in range(length):
+                
+                curr = q1.pop(0)
+                
+                q1.append(curr.val)
+                
+                if curr.left:
+                    q2.append(curr.left)
+                if curr.right:
+                    q2.append(curr.right)
+                
+            res.append(q1)
             q1 = q2
             q2 = []
         
         return res
+        

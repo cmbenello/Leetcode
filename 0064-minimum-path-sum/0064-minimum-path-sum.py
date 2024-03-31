@@ -25,10 +25,8 @@ class Solution:
                     dp[i + 1][j] = dynamic(i + 1, j)
                 val2 = dp[i + 1][j]
                 
-            # print(val1, val2, dp, grid)
             dp[i][j] = grid[i][j] + min(val1, val2)
             return dp[i][j]
             
         res = dynamic(0,0)
-        # print(dp)
         return res

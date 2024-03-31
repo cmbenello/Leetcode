@@ -1,22 +1,19 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        chars = [0] * 128
-        
-        left = right = 0
-        
-        longest = 0
-        
-        while right < len(s):
-            r = s[right]
-            chars[ord(r)] += 1
+        #option 1: go through all the substrings and keep track of the longest found that doesn't contain any repeating characters, will have 0(n^2)
+    
+        res = 0
+        for start in range(len(s)):
+            seen = set()
+            i = start
+            while i < len(s):
+                if s[i] in seen:
+                    break
+                    
+                if s[i] not in seen:
+                    seen.add(s[i])
+                    i += 1
+            res = max(res, len(seen))
             
-            while chars[ord(r)] > 1:
-                l = s[left]
-                chars[ord(l)] -= 1
-                left += 1
-            
-            longest = max(longest, right -left + 1)
-            
-            right += 1
-                
-        return longest
+        
+        return res

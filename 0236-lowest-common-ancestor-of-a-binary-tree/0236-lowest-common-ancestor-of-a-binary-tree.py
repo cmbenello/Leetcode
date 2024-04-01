@@ -13,30 +13,12 @@ class Solution:
         # how to handle the edge case wher the node is the value  - just return the value 
         
         #Helper to check if a node is in the tree
-        def get_path(root, curr_path, node):
-            if root is None:
-                return []
-            
-            curr_path.append(root)
-            
-            if root == node:
-                return curr_path
-            
-            path1 = get_path(root.left, curr_path[:], node)
-            path2 = get_path(root.right, curr_path[:], node)    
-            
-            if path1:
-                return path1
-            else:
-                return path2
-            
-    
-        path1 = get_path(root, [], p)
-        path2 = get_path(root, [], q)
-        
-        i = 0
-        while i < len(path1) and i < len(path2) and path1[i] == path2[i]:
-            # print(i, path1[i], path2[i])
-            i += 1
-        
-        return path1[i - 1]
+        if not root or root == p or root == q:
+            return root
+
+        l = self.lowestCommonAncestor(root.left, p, q)
+        r = self.lowestCommonAncestor(root.right, p, q)
+
+        if l and r:
+            return root
+        return l or r
